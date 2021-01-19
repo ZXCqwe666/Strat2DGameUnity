@@ -76,7 +76,7 @@ public class BuildingSystem : MonoBehaviour
     }
     public void UpdateBlueprint(int index) // HOOK IT UP WITH UI SYSTEM   CALL IT FROM INSTANCE
     {
-        selectedBuilding = BuildingDatabase.instance.buildingDatabase[index];
+        selectedBuilding = Database.instance.buildings[index];
         cellOffset = new Vector2(selectedBuilding.buildingSize.x / 2, selectedBuilding.buildingSize.y / 2);
 
         blueprintRenderer.sprite = selectedBuilding.buildingSprite;

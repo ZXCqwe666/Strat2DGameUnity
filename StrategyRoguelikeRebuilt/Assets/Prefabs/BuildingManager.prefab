@@ -146,4 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingDatabase:
+  - {fileID: 11400000, guid: d4092e93db633104f91750bf65a93039, type: 2}
   - {fileID: 11400000, guid: 2df723fbd0b0409409fca87bfdfee1e3, type: 2}
+  - {fileID: 11400000, guid: 36a2df198fe5d614094e582707ca88b5, type: 2}
+  - {fileID: 11400000, guid: 12544a8d44a5eab40872beaa169b71de, type: 2}
