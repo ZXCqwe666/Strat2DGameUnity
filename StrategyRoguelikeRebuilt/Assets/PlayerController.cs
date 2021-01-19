@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     public LayerMask groundLayer;
 
-    private readonly float speed = 8f, jumpStrength = 7f, jumpTime = 0.2f, coyoteTime = 0.1f, jumpRememberTime = 0.2f;
+    private readonly float speed = 12f, jumpStrength = 8f, jumpTime = 0.2f, coyoteTime = 0.1f, jumpRememberTime = 0.2f;
     private float timeSinceJumpPress, speedModifier, jumpTimer, coyoteTimer;
     private bool grounded, isJumping, canJump;
     private int framesOnGround = 0;
@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             coyoteTimer += Time.deltaTime;
-            speedModifier = 0.75f;
+            speedModifier = 0.8f;
         }
         #endregion
         #region Jump
@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
 
         rb.velocity = new Vector2(xInput * speed * speedModifier, rb.velocity.y);
         if (rb.velocity.y < 0)
-            rb.velocity += Vector2.up * Physics2D.gravity.y * 1.45f * Time.deltaTime;
+            rb.velocity += Vector2.up * Physics2D.gravity.y * 1.8f * Time.deltaTime;
 
         #endregion
     }
