@@ -38,6 +38,7 @@ public class BuildingSystem : MonoBehaviour
             GameObject building = Instantiate(buildingPrefab, position + new Vector2(0f, -0.25f), Quaternion.identity, transform); // adding Vector2(0f, -0.25f)
             building.GetComponent<SpriteRenderer>().sprite = selectedBuilding.buildingSprite;
             building.GetComponent<BoxCollider2D>().size = selectedBuilding.buildingSize;
+            building.GetComponent<Building>().buildingdata = selectedBuilding;
 
             if (Input.GetKey(KeyCode.LeftShift) == false) // TEMPORARY CONTROLS
                 ExitBuildingMode();
