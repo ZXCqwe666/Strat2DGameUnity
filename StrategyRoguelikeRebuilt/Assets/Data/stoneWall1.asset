@@ -20,3 +20,5 @@ MonoBehaviour:
   ids: 01000000
   efficiencyImpacts:
   - -0.5
+  itemCostId: 00000000
+  itemCostAmount: 0a000000

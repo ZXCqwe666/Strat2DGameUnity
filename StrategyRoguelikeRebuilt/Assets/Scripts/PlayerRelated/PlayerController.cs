@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
         else if (xInput == -1) playerSprite.flipX = true;
 
         rb.velocity = new Vector2(xInput * speed * speedModifier, rb.velocity.y);
-        if (rb.velocity.y < 0)
+        if (rb.velocity.y < 0f)
             rb.velocity += Vector2.up * Physics2D.gravity.y * 1.8f * Time.deltaTime;
 
         #endregion

@@ -46,6 +46,7 @@ public class BuildingSystem : MonoBehaviour
                 if (Input.GetKey(KeyCode.LeftShift) == false) // TEMPORARY CONTROLS
                     ExitBuildingMode();
             }
+            else ExitBuildingMode();
         }
     }
     private void UpdateBlueprintPosition()

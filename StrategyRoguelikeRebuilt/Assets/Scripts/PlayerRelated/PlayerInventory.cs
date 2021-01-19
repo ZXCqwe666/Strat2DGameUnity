@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
@@ -13,8 +14,8 @@ public class PlayerInventory : MonoBehaviour
     private void Start()
     {
         InventorySlots = new Dictionary<int, int>();
+        AddItem(0, 100); /// REMOVE ITS TESTING !!!!!!!!!!!!!!!!!!
     }
-
     public void AddItem(int id, int amount) 
     {
         if (InventorySlots.ContainsKey(id)) 
@@ -27,10 +28,10 @@ public class PlayerInventory : MonoBehaviour
             InventorySlots.Add(id, amount);
         }
     }
-
-    public bool CanBuy(int[] _itemCostId, int[] _itemCostAmount) 
+    public bool CanBuy(int[] _itemCostId, int[] _itemCostAmount)
     {
         bool isAbleToBuy = true;
+
         foreach(int element in _itemCostId) 
         {
             if (InventorySlots.ContainsKey(_itemCostId[element])) 
@@ -44,7 +45,6 @@ public class PlayerInventory : MonoBehaviour
         }
         return isAbleToBuy;
     }
-
     public void SpendResources(int[] _itemCostId, int[] _itemCostAmount) 
     {
         foreach (int element in _itemCostId)
@@ -55,6 +55,5 @@ public class PlayerInventory : MonoBehaviour
                 InventorySlots.Remove(element);
             }
         }
-
     }
 }
