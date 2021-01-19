@@ -8,6 +8,8 @@ public class Building : MonoBehaviour
     public BuildingData buildingdata;
     public LayerMask building;
 
+
+
     private void Start()
     {
         ChangeEfficiency();

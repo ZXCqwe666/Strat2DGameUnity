@@ -11,4 +11,6 @@ public class BuildingData : ScriptableObject
     public float impactRadius;
     public int[] ids;
     public float[] efficiencyImpacts;
+    public int[] itemCostId;
+    public int[] itemCostAmount;
 }

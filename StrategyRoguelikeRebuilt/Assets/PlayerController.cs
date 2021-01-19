@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     public LayerMask groundLayer;
 
-    private readonly float speed = 12f, jumpStrength = 8f, jumpTime = 0.2f, coyoteTime = 0.1f, jumpRememberTime = 0.2f;
+    private readonly float speed = 12f, jumpStrength = 12f, jumpTime = 0.25f, coyoteTime = 0.1f, jumpRememberTime = 0.2f;
     private float timeSinceJumpPress, speedModifier, jumpTimer, coyoteTimer;
     private bool grounded, isJumping, canJump;
     private int framesOnGround = 0;

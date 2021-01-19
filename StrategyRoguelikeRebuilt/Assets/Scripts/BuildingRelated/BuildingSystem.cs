@@ -35,13 +35,17 @@ public class BuildingSystem : MonoBehaviour
     {
         if (blueprintActive && canPlaceBuilding)
         {
-            GameObject building = Instantiate(buildingPrefab, position + new Vector2(0f, -0.25f), Quaternion.identity, transform); // adding Vector2(0f, -0.25f)
-            building.GetComponent<SpriteRenderer>().sprite = selectedBuilding.buildingSprite;
-            building.GetComponent<BoxCollider2D>().size = selectedBuilding.buildingSize;
-            building.GetComponent<Building>().buildingdata = selectedBuilding;
+            if (PlayerInventory.instance.CanBuy(selectedBuilding.itemCostId, selectedBuilding.itemCostAmount))
+            {
+                PlayerInventory.instance.SpendResources(selectedBuilding.itemCostId, selectedBuilding.itemCostAmount);
+                GameObject building = Instantiate(buildingPrefab, position + new Vector2(0f, -0.25f), Quaternion.identity, transform); // adding Vector2(0f, -0.25f)
+                building.GetComponent<SpriteRenderer>().sprite = selectedBuilding.buildingSprite;
+                building.GetComponent<BoxCollider2D>().size = selectedBuilding.buildingSize;
+                building.GetComponent<Building>().buildingdata = selectedBuilding;
 
-            if (Input.GetKey(KeyCode.LeftShift) == false) // TEMPORARY CONTROLS
-                ExitBuildingMode();
+                if (Input.GetKey(KeyCode.LeftShift) == false) // TEMPORARY CONTROLS
+                    ExitBuildingMode();
+            }
         }
     }
     private void UpdateBlueprintPosition()
@@ -77,10 +81,13 @@ public class BuildingSystem : MonoBehaviour
     public void UpdateBlueprint(int index) // HOOK IT UP WITH UI SYSTEM   CALL IT FROM INSTANCE
     {
         selectedBuilding = Database.instance.buildings[index];
-        cellOffset = new Vector2(selectedBuilding.buildingSize.x / 2, selectedBuilding.buildingSize.y / 2);
+        if (PlayerInventory.instance.CanBuy(selectedBuilding.itemCostId, selectedBuilding.itemCostAmount)) 
+        {
+            cellOffset = new Vector2(selectedBuilding.buildingSize.x / 2, selectedBuilding.buildingSize.y / 2);
 
-        blueprintRenderer.sprite = selectedBuilding.buildingSprite;
-        blueprintActive = true;
+            blueprintRenderer.sprite = selectedBuilding.buildingSprite;
+            blueprintActive = true;
+        }   
     }
     private void ExitBuildingMode()
     {

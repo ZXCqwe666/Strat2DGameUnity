@@ -27,4 +27,34 @@ public class PlayerInventory : MonoBehaviour
             InventorySlots.Add(id, amount);
         }
     }
+
+    public bool CanBuy(int[] _itemCostId, int[] _itemCostAmount) 
+    {
+        bool isAbleToBuy = true;
+        foreach(int element in _itemCostId) 
+        {
+            if (InventorySlots.ContainsKey(_itemCostId[element])) 
+            { 
+                if(InventorySlots[element] >= _itemCostAmount[element])
+                {
+                    continue;
+                }
+            }
+            isAbleToBuy = false;
+        }
+        return isAbleToBuy;
+    }
+
+    public void SpendResources(int[] _itemCostId, int[] _itemCostAmount) 
+    {
+        foreach (int element in _itemCostId)
+        {
+            InventorySlots[element] -= _itemCostAmount[element];
+            if (InventorySlots[element] == 0)
+            {
+                InventorySlots.Remove(element);
+            }
+        }
+
+    }
 }
